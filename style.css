@@ -1,0 +1,218 @@
+/* === ДОПОЛНИТЕЛЬНЫЕ СТИЛИ === */
+
+/* Стили для слайдеров */
+input[type="range"] {
+    -webkit-appearance: none;
+    background: transparent;
+}
+
+input[type="range"]::-webkit-slider-track {
+    background: rgba(60, 60, 90, 0.5);
+    height: 6px;
+    border-radius: 3px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--primary);
+    cursor: pointer;
+    margin-top: -5px;
+}
+
+input[type="range"]::-moz-range-track {
+    background: rgba(60, 60, 90, 0.5);
+    height: 6px;
+    border-radius: 3px;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--primary);
+    cursor: pointer;
+    border: none;
+}
+
+/* Стили для вертикальных слайдеров */
+input[type="range"][orient="vertical"] {
+    writing-mode: bt-lr;
+    -webkit-appearance: slider-vertical;
+    width: 20px;
+    height: 150px;
+}
+
+/* Стили для селектов */
+.plugin-select {
+    width: 100%;
+    padding: 8px 12px;
+    background: rgba(40, 40, 60, 0.8);
+    border: 1px solid var(--light);
+    color: var(--text);
+    border-radius: 6px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+/* Стили для кнопок пианино */
+.piano-key {
+    transition: all 0.1s;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.piano-key:hover {
+    background: #f0f0f0 !important;
+}
+
+.piano-key:active {
+    background: var(--primary) !important;
+    transform: scale(0.95);
+}
+
+/* Стили для EQ слайдеров */
+.eq-band {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.eq-slider {
+    height: 120px;
+    width: 30px;
+}
+
+/* Анимации */
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.plugin-window {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Стили для скроллбара */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(40, 40, 60, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--secondary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+
+/* Стили для drag & drop */
+.drag-over {
+    border: 2px dashed var(--primary) !important;
+    background: rgba(0, 255, 170, 0.1) !important;
+}
+
+/* Стили для нот в пиано ролле */
+.piano-roll-note {
+    position: absolute;
+    background: var(--primary);
+    border-radius: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    cursor: move;
+}
+
+.piano-roll-note:hover {
+    background: var(--accent);
+}
+
+/* Индикатор записи */
+@keyframes recordBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.recording .fa-circle {
+    animation: recordBlink 1s infinite;
+    color: var(--red) !important;
+}
+
+/* Стили для паттернов в плейлисте */
+.pattern-clip {
+    background: var(--secondary);
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: move;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 11px;
+    color: white;
+}
+
+.pattern-clip:hover {
+    background: var(--primary);
+    color: black;
+}
+
+/* Стили для выделения */
+.selected {
+    border: 2px solid var(--accent) !important;
+    background: rgba(255, 170, 0, 0.1) !important;
+}
+
+/* Стили для тултипов */
+[title] {
+    position: relative;
+}
+
+[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    white-space: nowrap;
+    z-index: 1000;
+    margin-bottom: 5px;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+    }
+    
+    .file-browser,
+    .mixer-panel {
+        width: 100%;
+        height: 200px;
+    }
+    
+    .brand-header {
+        padding: 5px 10px;
+        height: 40px;
+    }
+    
+    .logo {
+        font-size: 18px;
+    }
+}
